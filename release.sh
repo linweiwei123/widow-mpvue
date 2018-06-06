@@ -16,7 +16,7 @@ then
   # git commit
   git add .
   git commit -m "[release] $VERSION"
-  git push -u origin master
+  git push -u all master
 
   # npm publish
   npm version $VERSION
