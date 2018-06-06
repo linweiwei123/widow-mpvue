@@ -1,14 +1,14 @@
 <template>
   <div class="pay-wrapper" v-if="display">
     <div class="pay-container">
-      <div class="pay-title"></div>
-      <div class="pwd-block" @click="setFocus">
+      <div class="pay-title">{{val}}</div>
+      <div class="pwd-block" @tap="setFocus">
         <div class="password-list">
           <div class="item" v-for="(item,index) in passwords" v-bind:key="index">
             <input type="number" v-model="passwords[index]" disabled >
           </div>
         </div>
-        <input type="number" :focus="pwdFocus">
+        <input type="number" :focus="pwdFocus" @blur="inputBlur" @input="inputChange">
       </div>
     </div>
   </div>
@@ -22,7 +22,8 @@
           return {
             display: false,
             passwords:['','','','','',''],
-            pwdFocus: false
+            pwdFocus: false,
+            val:''
           }
         },
         computed:{
@@ -36,10 +37,15 @@
           },
           // 点击聚焦
           setFocus() {
+            console.log('setFocus');
             this.pwdFocus = true
           },
           inputBlur(){
             this.pwdFocus = false;
+          },
+          inputChange(e){
+            console.log(e);
+            this.val = e.detail.value
           }
         }
     }
