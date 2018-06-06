@@ -1,6 +1,6 @@
 {
   "name": "widow-mpvue",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "A Mpvue project",
   "author": "林伟伟 <linweiwei@xiaoyouzi.com>",
   "main": "lib/index.js",
