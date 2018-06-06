@@ -1,14 +1,17 @@
 <template>
   <div class="pay-wrapper" v-if="display">
     <div class="pay-container">
-      <div class="pay-title">{{val}}</div>
+      <div class="pay-title">
+        <span class="icon-close" @click="hide"></span>
+        <span class="text">请输入支付密码</span>
+      </div>
       <div class="pwd-block" @tap="setFocus">
         <div class="password-list">
           <div class="item" v-for="(item,index) in passwords" v-bind:key="index">
-            <input type="number" v-model="passwords[index]" disabled >
+            <input type="password" v-model="passwords[index]" disabled >
           </div>
         </div>
-        <input type="number" :focus="pwdFocus" @blur="inputBlur" @input="inputChange">
+        <input type="number" :focus="pwdFocus"  @input="handleChange" @blur="inputBlur">
       </div>
     </div>
   </div>
@@ -22,7 +25,7 @@
           return {
             display: false,
             passwords:['','','','','',''],
-            pwdFocus: false,
+            pwdFocus: true,
             val:''
           }
         },
@@ -32,20 +35,37 @@
           show(){
             this.display = true;
           },
-          method(){
+          hide(){
             this.display = false;
+            this.passwords = ['','','','','','']
           },
           // 点击聚焦
           setFocus() {
-            console.log('setFocus');
             this.pwdFocus = true
           },
           inputBlur(){
             this.pwdFocus = false;
           },
-          inputChange(e){
-            console.log(e);
-            this.val = e.detail.value
+          handleChange(e){
+            let val = e.target.value;
+            let pwds = val.split('');
+            if(pwds.length > 6){
+              return;
+            }
+            else if(pwds.length === 6){
+              let passwordsTemp = ['','','','','',''];
+              passwordsTemp.splice(0,pwds.length);
+              this.passwords = pwds.concat(passwordsTemp);
+              this.$nextTick(()=>{
+                this.$emit('onPassword',this.passwords.join(''));
+                this.passwords = ['','','','','','']
+              });
+            }
+            else{
+              let passwordsTemp = ['','','','','',''];
+              passwordsTemp.splice(0,pwds.length);
+              this.passwords = pwds.concat(passwordsTemp);
+            }
           }
         }
     }
@@ -76,10 +96,27 @@
     .pay-title{
       height: 50px;
       width: 100%;
+      display:flex;
+      justify-content:start;
+    }
+
+    .pay-title>span{
+      display: inline-block;
+    }
+
+    .pay-title>span.text{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
     }
 
     .pwd-block{
       position: relative;
+    }
+
+    .icon-close{
+      width:30px;
+      height:30px;
     }
 
     .pwd-block>input{
@@ -115,7 +152,12 @@
     }
 
     .password-list .item input{
-      line-height: 50px;
+      height:80rpx;
+      font-size:90rpx;
+      text-align:center;
+      line-height:120rpx;
+      box-sizing:border-box;
+      display: inline-block;
     }
 
 

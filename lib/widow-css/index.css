@@ -39,6 +39,11 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='dislike' viewBox='0 0 72 72' width='100%25' height='100%25'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cpath d='M36 72c19.882 0 36-16.118 36-36S55.882 0 36 0 0 16.118 0 36s16.118 36 36 36zm0-2c18.778 0 34-15.222 34-34S54.778 2 36 2 2 17.222 2 36s15.222 34 34 34z' fill='%23FFF'%3E%3C/path%3E%3Cpath fill='%23FFF' d='M47 22h2v6h-2zm-24 0h2v6h-2z'%3E%3C/path%3E%3Cpath d='M21 51s4.6-7 15-7 15 7 15 7' stroke='%23FFF' stroke-width='2'%3E%3C/path%3E%3C/g%3E%3C/svg%3E");
 }
 
+.icon-close{
+  background-size: cover;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='cross' viewBox='0 0 44 44' width='100%25' height='100%25'%3E%3Cpath fill-rule='evenodd' d='M24.008 21.852l8.97-8.968L31.092 11l-8.97 8.968L13.157 11l-1.884 1.884 8.968 8.968-9.24 9.24 1.884 1.885 9.24-9.24 9.24 9.24 1.885-1.884-9.24-9.24z'%3E%3C/path%3E%3C/svg%3E");
+}
+
 /** flex布局 **/
 .widow-flex{
   display: flex;

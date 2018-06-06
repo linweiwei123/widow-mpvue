@@ -1,7 +1,8 @@
 <template>
     <div>
       <button class="line-btn" @click="showPayPassword">显示支付密码弹框</button>
-      <widow-pay-password></widow-pay-password>
+      <widow-pay-password v-on:onPassword="onPassword"></widow-pay-password>
+      <div>  密码 : {{pwd}}</div>
     </div>
 </template>
 
@@ -14,7 +15,7 @@
         },
         data(){
           return {
-
+            pwd:''
           }
         },
         mounted(){
@@ -23,6 +24,10 @@
         methods:{
           showPayPassword(){
             this.payPassword.show();
+          },
+          onPassword(password){
+            this.pwd = password;
+            this.payPassword.hide();
           }
         }
     }
