@@ -53,7 +53,8 @@
             options: Object.assign(defaultConfig,this.config||{}),
             token:'',
             imgIndex:1,
-            uploading: false
+            uploading: false,
+            previewHost:''
           }
         },
         components:{
@@ -85,7 +86,8 @@
         created(){
           thor.post(this.options.tokenUrl)
             .then(res=>{
-              this.token = res.data.qiniuToken
+              this.token = res.data.qiniuToken;
+              this.previewHost = res.data.DOMAIN
             })
             .catch(err=>{
               this.$emit('errorHandler',err);
@@ -177,6 +179,9 @@
           },
           imageClick(item){
             this.$emit('onImageClick',item)
+          },
+          reFresh(){
+
           }
         }
     }

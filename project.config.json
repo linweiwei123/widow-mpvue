@@ -10,7 +10,7 @@
 	"miniprogramRoot": "./dist/",
 	"compileType": "miniprogram",
 	"appid": "wx2287f17e77888d2f",
-	"projectname": "widow",
+	"projectname": "widow2",
 	"condition": {
 		"search": {
 			"current": -1,

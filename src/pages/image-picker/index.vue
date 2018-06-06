@@ -20,8 +20,6 @@
               tokenUrl: 'https://plan.fjhululu.com/apis/base/getQiniuToken',
               // 上传的服务器地址
               serverUrl: 'https://upload.qiniup.com/',
-              // 图片预览的域名地址
-              previewHost: 'https://p8rgabhis.bkt.clouddn.com',
               // 查看https://developers.weixin.qq.com/miniprogram/dev/api/media-picture.html#wxchooseimageobject
               sizeType:['original','compressed'],
               // 最多支持上传的文件

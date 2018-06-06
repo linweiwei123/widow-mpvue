@@ -16,7 +16,7 @@ then
   # git commit
   git add .
   git commit -m "[release] $VERSION"
-  git push -u widow-mpvue master
+  git push -u origin master
 
   # npm publish
   npm version $VERSION
