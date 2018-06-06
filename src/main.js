@@ -29,6 +29,7 @@ export default {
       'pages/calender-hotel/main',
       'pages/image-picker/main',
       'pages/city-locator/main',
+      'pages/pay-password/main',
     ],
     window: {
       backgroundTextStyle: 'light',

@@ -13,6 +13,9 @@
         <li>
           <span>4、<a href="/pages/city-locator/main">城市定位与选择</a></span>
         </li>
+        <li>
+          <span>5、<a href="/pages/pay-password/main">支付密码弹框</a></span>
+        </li>
       </ul>
     </div>
 </template>
