@@ -2,7 +2,7 @@
 
 效果图
 
-![image](http://ovn18u9yn.bkt.clouddn.com/pay-password.jpg)
+![image](http://ovn18u9yn.bkt.clouddn.com/pay-password.jpg=375*667)
 
 ### 说明
 1、此主键用于show 输入支付密码弹框=>关闭=>获得密码
