@@ -57,3 +57,4 @@ widowInstall(Vue);
 2. [calenderHotel](./lib/calender-hotel/zh-CN.md) 日期控件
 3. [imagePicker](./lib/image-picker/zh-CN.md) 上传图片组件
 4. [cityLocator](./lib/city-locator/zh-CN.md) 城市定位与选择
+5. [PayPassword](./lib/pay-password/zh-CN.md) 支付密码弹框组件

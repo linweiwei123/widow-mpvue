@@ -18,13 +18,14 @@
 </template>
 
 <script>
+    const defaultPwds = ['','','','','',''];
     export default {
         name: "index",
         props:['config'],
         data(){
           return {
             display: false,
-            passwords:['','','','','',''],
+            passwords:defaultPwds,
             pwdFocus: true,
             val:''
           }
@@ -37,7 +38,7 @@
           },
           hide(){
             this.display = false;
-            this.passwords = ['','','','','','']
+            this.passwords = defaultPwds
           },
           // 点击聚焦
           setFocus() {
@@ -53,16 +54,16 @@
               return;
             }
             else if(pwds.length === 6){
-              let passwordsTemp = ['','','','','',''];
+              let passwordsTemp = defaultPwds;
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
               this.$nextTick(()=>{
                 this.$emit('onPassword',this.passwords.join(''));
-                this.passwords = ['','','','','','']
+                this.passwords = defaultPwds
               });
             }
             else{
-              let passwordsTemp = ['','','','','',''];
+              let passwordsTemp = defaultPwds;
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
             }
