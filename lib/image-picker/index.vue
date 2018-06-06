@@ -7,9 +7,9 @@
         <!-- 块级边距控制 -->
         <div class="widow-flex-item" v-for="(item,index2) in line" v-bind:key="index2">
           <!-- 图片块 -->
-          <div class="widow-image-picker-item" v-if="item.type === 'image'">
-            <div class="widow-image-picker-item-remove" @click="del(item.id)"></div>
-            <div class="widow-image-picker-item-content" :style="{'background-image':'url('+item.path+')'}" @click="imageClick(item)">
+          <div class="widow-image-picker-item" v-if="item.url">
+            <div class="widow-image-picker-item-remove" @click="del(index2)"></div>
+            <div class="widow-image-picker-item-content" :style="{'background-image':'url(' + (item.path?item.path:item.url) + ')'}" @click="imageClick(item)">
             </div>
           </div>
           <!-- 添加块 -->
@@ -42,17 +42,14 @@
     };
     export default {
         name: "imagePicker",
-        props: ['config'],
+        props: ['config','data'],
         data(){
           return {
-            files:[{
-              type:'add'
-            }],
+            files:[],
             listFiles:[],
             calFiles:[],
             options: Object.assign(defaultConfig,this.config||{}),
             token:'',
-            imgIndex:1,
             uploading: false,
             previewHost:''
           }
@@ -61,11 +58,16 @@
           'widow-toast': widowToast
         },
         computed: {
+          changeFiles(){
+            this.files = (this.data||[]).concat([{
+              type:'add'
+            }])
+          },
           calculateFiles(){
             let l = this.files.length;
             let lineNumber = Math.floor(l / 4);
-            // 根据总数进行分行
             this.listFiles = [];
+            // 根据总数进行分行
             let tempArr = [];
             if(lineNumber>0){
               for(let i=0;i<lineNumber;i++){
@@ -144,13 +146,9 @@
 
                       // 数组倒一个元素前插入
                       that.files.splice(that.files.length-1,spliceNumber,{
-                        id:that.imgIndex,
-                        type:'image',
                         path:filePath,
                         url:url
                       });
-                      // 主键自增1
-                      that.imgIndex ++;
 
                     }
                     else{
@@ -162,9 +160,7 @@
             })
           },
           del(id){
-            this.files = this.files.filter((item)=>{
-              return item.id !== id;
-            });
+            this.files.splice(id,1)
             // 删除文件时判断是否有容纳空间，并且不存在添加模块
             if(this.files.length<this.options.maxImage){
               let hasAdd = this.files.some((item)=>{
@@ -189,7 +185,7 @@
     function formatFiles(files){
       let tempArr = [];
       files.forEach((item)=>{
-        if(typeof item.type !== "undefined" && item.type !== 'add'){
+        if(typeof item.url !== "undefined" && item.type !== 'add'){
           tempArr.push(item.url);
         }
       });
