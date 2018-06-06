@@ -43,6 +43,7 @@ methods
 
 ```
 2、关闭 （关闭会清空数据）
+```
       this.payPassword.hide();
 ```
 
