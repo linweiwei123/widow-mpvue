@@ -34,6 +34,7 @@
         },
         methods:{
           show(){
+            this.passwords = ['','','','','',''];
             this.display = true;
           },
           hide(){
@@ -54,16 +55,15 @@
               return;
             }
             else if(pwds.length === 6){
-              let passwordsTemp = defaultPwds;
+              let passwordsTemp = this.passwords;
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
               this.$nextTick(()=>{
                 this.$emit('onPassword',this.passwords.join(''));
-                this.passwords = defaultPwds
               });
             }
             else{
-              let passwordsTemp = defaultPwds;
+              let passwordsTemp = this.passwords;
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
             }
