@@ -65,11 +65,9 @@
               });
             }
             else{
-              console.log(pwds,this.passwords);
               let passwordsTemp = ['','','','','',''];
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
-              console.log(this.passwords);
             }
           }
         }
