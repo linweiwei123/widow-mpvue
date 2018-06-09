@@ -27,7 +27,8 @@
             display: false,
             passwords:defaultPwds,
             pwdFocus: true,
-            val:''
+            val:'',
+            tt:''
           }
         },
         computed:{
@@ -49,13 +50,14 @@
             this.pwdFocus = false;
           },
           handleChange(e){
+            this.tt = e.target.value;
             let val = e.target.value;
             let pwds = val.split('');
             if(pwds.length > 6){
               return;
             }
             else if(pwds.length === 6){
-              let passwordsTemp = this.passwords;
+              let passwordsTemp = ['','','','','',''];
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
               this.$nextTick(()=>{
@@ -63,9 +65,11 @@
               });
             }
             else{
-              let passwordsTemp = this.passwords;
+              console.log(pwds,this.passwords);
+              let passwordsTemp = ['','','','','',''];
               passwordsTemp.splice(0,pwds.length);
               this.passwords = pwds.concat(passwordsTemp);
+              console.log(this.passwords);
             }
           }
         }
@@ -154,9 +158,8 @@
 
     .password-list .item input{
       height:80rpx;
-      font-size:90rpx;
+      font-size:45rpx;
       text-align:center;
-      line-height:120rpx;
       box-sizing:border-box;
       display: inline-block;
     }
